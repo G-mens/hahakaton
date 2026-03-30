@@ -1,0 +1,93 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block title %} Login {% endblock %} 
+
+<!-- Element injected in the BODY element -->
+{% block body_class %} login-page {% endblock body_class %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/adminlte.min.css') }}">
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+  <div class="login-box">
+
+    <div class="login-logo">
+        <a>Admin Panel</a>
+    </div>
+
+    <!-- /.login-logo -->
+    <div class="card">
+      <div class="card-body login-card-body">
+        </p>
+        <form method="post" action="">
+
+          {{ form.hidden_tag() }}
+
+          <div class="input-group mb-3">
+            {{ form.username(placeholder="Логин", class="form-control") }}
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            {{ form.password(placeholder="Пароль", class="form-control", type="password") }}
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8">
+              <div class="icheck-primary">
+                <input type="checkbox" id="remember">
+                <label for="remember">
+                  Запомнить меня
+                </label>
+              </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-4">
+              <button type="submit" name="login" class="btn btn-primary btn-block">Войти</button>
+            </div>
+            <!-- /.col -->
+          </div>
+        </form>
+        <br /><br />
+
+        <div class="text-center">
+            Впервые? <a href="{{ url_for('authentication_blueprint.register') }}" class="text-center">Зарегистрироваться</a>
+            <br />
+            <br />
+            <a  class="text-center">
+            создано при поддержке <a href="https://uust.ru/">УУНИТ</a>.</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+{% endblock content %}
+
+{% block javascripts %}
+
+  <script src="{{ url_for('static', filename='assets/plugins/jquery/jquery.min.js') }}"></script>
+
+  <script src="{{ url_for('static', filename='assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+{% endblock javascripts %}
